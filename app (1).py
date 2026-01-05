@@ -10,8 +10,9 @@ st.set_page_config(
 )
 
 # Load model & scaler
-model = joblib.load("model/acceptance.pkl")
-scaler = joblib.load("model/scaler.pkl")
+model = joblib.load("job_acceptance_model.pkl")
+scaler = joblib.load("scaler.pkl")
+
 
 # Title
 st.title("🎓 Job Acceptance Prediction System")
