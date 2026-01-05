@@ -1,30 +1,21 @@
-# 🎓 Job Acceptance Prediction System
+# Job Acceptance Prediction System
 
-A professional Machine Learning web application that predicts whether a candidate will be accepted for a job based on academic, technical, and personal attributes.
+## Project Description
+A machine learning application that predicts whether a candidate will be accepted for a job based on academic and professional attributes.
 
----
+## Project Objective
+To build a predictive model that assists in job acceptance decision-making using machine learning techniques.
 
-## 📌 Project Objective
-The objective of this project is to use Machine Learning techniques to predict job acceptance outcomes and assist recruiters or institutions in making data-driven decisions.
-
----
-
-## 📊 Dataset
+## Dataset
 - Custom CSV dataset
-- Cleaned and preprocessed
-- Scaled using StandardScaler
 - Target variable: Job Acceptance (Accepted / Rejected)
 
----
-
-## 🧠 Machine Learning Model
+## Machine Learning Model
 - Algorithm: Random Forest Classifier
 - Feature Scaling: StandardScaler
-- Model Serialization: Joblib (`.pkl` files)
+- Model saved using Joblib
 
----
-
-## 🛠️ Technologies Used
+## Technologies Used
 - Python
 - Streamlit
 - Scikit-learn
@@ -32,6 +23,19 @@ The objective of this project is to use Machine Learning techniques to predict j
 - NumPy
 - Joblib
 
----
+## Project Structure
+job-acceptance-prediction/
+├── app.py
+├── requirements.txt
+├── README.md
+├── job_acceptance_model.pkl
+└── scaler.pkl
+## How to Run
+pip install -r requirements.txt
+streamlit run app.py
 
-## 📁 Project Structure
+## Deployment
+Deployed using Streamlit Cloud.
+
+## Author
+Muhammad Faizan
