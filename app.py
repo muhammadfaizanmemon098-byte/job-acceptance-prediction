@@ -13,34 +13,39 @@ st.set_page_config(
 model = joblib.load("job_acceptance_model.pkl")
 scaler = joblib.load("scaler.pkl")
 
-
 # Title
 st.title("🎓 Job Acceptance Prediction System")
 st.write("Predict whether a candidate will be accepted for a job using Machine Learning.")
 
 st.divider()
 
-# Input fields (match training order!)
-labels = [
-    "SSC Percentage",
-    "HSC Percentage",
-    "Degree Percentage",
-    "Employability Test Percentage",
-    "MBA Percentage",
-    "Years of Experience",
-    "Skills Match Percentage",
-    "Number of Certifications",
-    "Internship Completed (0 = No, 1 = Yes)",
-    "Interview Score"
-]
+# Inputs (EXACT training order)
+ssc = st.number_input("SSC Percentage", min_value=0.0, max_value=100.0, step=0.1)
+hsc = st.number_input("HSC Percentage", min_value=0.0, max_value=100.0, step=0.1)
+degree = st.number_input("Degree Percentage", min_value=0.0, max_value=100.0, step=0.1)
+emp_test = st.number_input("Employability Test Percentage", min_value=0.0, max_value=100.0, step=0.1)
+mba = st.number_input("MBA Percentage", min_value=0.0, max_value=100.0, step=0.1)
+experience = st.number_input("Years of Experience", min_value=0.0, max_value=40.0, step=0.5)
+skills = st.number_input("Skills Match Percentage", min_value=0.0, max_value=100.0, step=0.1)
+certs = st.number_input("Number of Certifications", min_value=0, max_value=20, step=1)
+internship = st.selectbox("Internship Completed", [0, 1])
+interview = st.number_input("Interview Score", min_value=0.0, max_value=100.0, step=0.1)
 
-inputs = []
-for label in labels:
-    inputs.append(st.number_input(label, step=0.1))
-
-# Predict button
+# Predict
 if st.button("🔍 Predict Job Acceptance"):
-    X = np.array(inputs).reshape(1, -1)
+    X = np.array([
+        ssc,
+        hsc,
+        degree,
+        emp_test,
+        mba,
+        experience,
+        skills,
+        certs,
+        internship,
+        interview
+    ]).reshape(1, -1)
+
     X_scaled = scaler.transform(X)
 
     prediction = model.predict(X_scaled)[0]
@@ -59,4 +64,4 @@ if st.button("🔍 Predict Job Acceptance"):
         "Accepted": probability[1]
     })
 
-st.caption("Final Year Machine Learning Project")
+st.caption("Final Machine Learning Project")
